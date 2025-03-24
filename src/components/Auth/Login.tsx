@@ -20,7 +20,7 @@ const Login = ({ onSocialLogin }: LoginProps) => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: provider,
             options: {
-                redirectTo: 'https://login-auth-jet-theta.vercel.app/',
+                redirectTo: 'https://login-auth-jet-theta.vercel.app'
             }
         })
 
