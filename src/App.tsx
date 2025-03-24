@@ -17,7 +17,6 @@ function App() {
   useEffect(() => {
     setIsAuthenticated(false);
     supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log(session)
       if (session?.user) {
         setIsAuthenticated(true);
         setUser({
