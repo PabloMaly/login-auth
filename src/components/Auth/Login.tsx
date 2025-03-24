@@ -18,10 +18,7 @@ interface LoginProps {
 const Login = ({ onSocialLogin }: LoginProps) => {
     const handleSocialLogin = async (provider: 'google' | 'github') => {
         const { error } = await supabase.auth.signInWithOAuth({
-            provider: provider,
-            options: {
-                redirectTo: 'http://localhost:5173/',
-            }
+            provider: provider
         })
 
         if (error) {
