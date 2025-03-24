@@ -18,7 +18,10 @@ interface LoginProps {
 const Login = ({ onSocialLogin }: LoginProps) => {
     const handleSocialLogin = async (provider: 'google' | 'github') => {
         const { error } = await supabase.auth.signInWithOAuth({
-            provider: provider
+            provider: provider,
+            options: {
+                redirectTo: 'https://login-auth-jet-theta.vercel.app/',
+            }
         })
 
         if (error) {
