@@ -47,7 +47,6 @@ function App() {
       console.error('Error cerrando sesión:', error.message);
     } else {
       setIsAuthenticated(false);
-      window.location.href = '/login';
     }
   };
 
