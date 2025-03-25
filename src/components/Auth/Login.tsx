@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const isDev = process.env.NODE_ENV === 'dev'
 
 if (!supabaseUrl || !supabaseAnonKey) {
     throw new Error('Please set your Supabase environment variables');
@@ -20,7 +21,9 @@ const Login = ({ onSocialLogin }: LoginProps) => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: provider,
             options: {
-                redirectTo: 'https://login-auth-jet-theta.vercel.app'
+                redirectTo: isDev
+                ? 'http://localhost:5173'
+                : 'https://login-auth-jet-theta.vercel.app/'
             }
         })
 
